@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+   
+    <button onclick="move()" id="btn1" style="top: 200px;left: 50px;position:absolute;">test</button>
+    <button onclick="move()" id="btn2" style="top: 10px;left: 1000px;position:absolute;">test2</button>
+    
+    <script>
+        let newTop1 = 200,newLeft1=50
+        let newTop2 = 200,newLeft2=50
+        let deltaTop1=20,deltaLeft1=35
+        let deltaTop2=15,deltaLeft2=30
+        const move = () => {
+            //update position
+            newTop1 += deltaTop1
+            newLeft1 += deltaLeft1
+            newTop2+=deltaTop2
+            newLeft2+=deltaLeft2;
+         //aplly new position
+            btn1.style.top = `${newTop1}px`
+            btn1.style.left= `${newLeft1}px`
+            btn2.style.top = `${newTop2}px`
+            btn2.style.left= `${newLeft2}px`
+           //chaneg directions if buttons reach the edge
+        if(newTop1 >window.innerHeight-50 || newTop1 < 0)
+        {
+            deltaTop1 =-deltaTop1;
+            deltaLeft1 = -deltaLeft1;
+        }
+        if(newTop2>window.innerHeight-50||newTop2<0){
+            deltaTop2=-deltaTop2
+            deltaLeft2=-deltaLeft2
+        }
+        console.log("done");
+        }
+setInterval(move,100)
+    </script>
+    
+</body>
+
+</html>
